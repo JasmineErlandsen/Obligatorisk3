@@ -31,7 +31,7 @@ public class Ansatt {
     private List<Prosjektdeltagelse> deltagelser;
 
     public void skrivUt(String innrykk) {
-        System.out.printf("%sAnsatt nr %d: %s %s", innrykk, id, fornavn, etternavn);
+        System.out.printf("%sAnsatt nr %d: %s %s", innrykk, AnsattID, Fornavn, Etternavn);
     }
 
     public void skrivUtMedProsjekter() {
