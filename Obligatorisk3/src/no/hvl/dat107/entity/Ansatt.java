@@ -49,82 +49,102 @@ public class Ansatt {
     }
 
     public int getAnsattID() {
+
         return AnsattID;
     }
 
     public void setAnsattID(int ansattID) {
+
         AnsattID = ansattID;
     }
 
     public String getBrukernavn() {
+
         return Brukernavn;
     }
 
     public void setBrukernavn(String brukernavn) {
+
         Brukernavn = brukernavn;
     }
 
     public String getFornavn() {
+
         return Fornavn;
     }
 
     public void setFornavn(String fornavn) {
+
         Fornavn = fornavn;
     }
 
     public String getEtternavn() {
+
         return Etternavn;
     }
 
     public void setEtternavn(String etternavn) {
+
         Etternavn = etternavn;
     }
 
     public Date getAnsettelsesDato() {
+
         return AnsettelsesDato;
     }
 
     public void setAnsettelsesDato(Date ansettelsesDato) {
+
         AnsettelsesDato = ansettelsesDato;
     }
 
     public String getStilling() {
+
         return Stilling;
     }
 
     public void setStilling(String stilling) {
+
         Stilling = stilling;
     }
 
     public double getManedslonn() {
+
         return Manedslonn;
     }
 
     public void setManedslonn(double manedslonn) {
+
         Manedslonn = manedslonn;
     }
 
     public String getAvdeling() {
+
         return Avdeling;
     }
 
     public void setAvdeling(String avdeling) {
+
         Avdeling = avdeling;
     }
 
     public boolean isErSjef() {
+
         return erSjef;
     }
 
     public void setErSjef(boolean erSjef) {
+
         this.erSjef = erSjef;
     }
 
     public List<Prosjektdeltagelse> getDeltagelser() {
+
         return deltagelser;
     }
 
     public void setDeltagelser(List<Prosjektdeltagelse> deltagelser) {
+
         this.deltagelser = deltagelser;
     }
 }

@@ -13,7 +13,9 @@ public class Main {
         ProsjektDAO prosjektDAO = new ProsjektDAO();
 
         Ansatt a2 = ansattDAO.finnAnsattMedId(2);
-        a2.skrivUtMedProsjekter();
+        a2.skrivUt("");
+
+
 
 //        Prosjekt p2 = prosjektDAO.finnProsjektMedId(2);
 //        p2.skrivUtMedAnsatte();
