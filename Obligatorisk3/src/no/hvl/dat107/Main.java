@@ -13,9 +13,14 @@ public class Main {
         ProsjektDAO prosjektDAO = new ProsjektDAO();
 
         Ansatt a2 = ansattDAO.finnAnsattMedId(2);
-        a2.skrivUt("");
+        System.out.println("Navn: " + a2.getFornavn());
+        System.out.println("AnsattID: " + a2.getAnsattID());
+        System.out.println("Stilling: " + a2.getStilling());
 
 
+       Ansatt a3 = ansattDAO.finnAnsattMedId(3);
+       System.out.println("Navn: " + a3.getFornavn());
+       System.out.println("Måndeslønn: " + a3.getManedslonn());
 
 //        Prosjekt p2 = prosjektDAO.finnProsjektMedId(2);
 //        p2.skrivUtMedAnsatte();
