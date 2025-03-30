@@ -21,13 +21,13 @@ public class Main {
         Prosjekt p3 = prosjektDAO.finnProsjektMedId(3);
         p3.skrivUtMedAnsatte();
 
-        ansattDAO.registrerProsjektdeltagelse(a2.getId(), p3.getId());
+        ansattDAO.registrerProsjektdeltagelse(a2.getAnsattID(), p3.getId());
         a2 = ansattDAO.finnAnsattMedId(2);
         p3 = prosjektDAO.finnProsjektMedId(3);
         a2.skrivUtMedProsjekter();
         p3.skrivUtMedAnsatte();
 
-        ansattDAO.slettProsjektdeltagelse(a2.getId(), p3.getId());
+        ansattDAO.slettProsjektdeltagelse(a2.getAnsattID(), p3.getId());
         a2 = ansattDAO.finnAnsattMedId(2);
         p3 = prosjektDAO.finnProsjektMedId(3);
         a2.skrivUtMedProsjekter();

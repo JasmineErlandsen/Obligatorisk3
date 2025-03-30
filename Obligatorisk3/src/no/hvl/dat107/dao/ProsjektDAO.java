@@ -13,7 +13,7 @@ public class ProsjektDAO {
 
     public ProsjektDAO() {
         emf = Persistence.createEntityManagerFactory("AnsattProsjektPU",
-                Map.of("jakarta.persistence.jdbc.password", Passwords.AZURE_PASSWORD));
+                Map.of("jakarta.persistence.jdbc.password", "Kikerter3rdigg"));
     }
 
     public Prosjekt finnProsjektMedId(int id) {

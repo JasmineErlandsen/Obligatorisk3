@@ -14,8 +14,8 @@
         <properties>
             <!--  Generelle JPA properties -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h799074"/>
-            <property name="jakarta.persistence.jdbc.user" value="h799074"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://ider-database.westeurope.cloudapp.azure.com:5433/h573042"/>
+            <property name="jakarta.persistence.jdbc.user" value="h573042"/>
 
             <!-- Passordet blir satt i Java-koden i stedet
                 <property name="jakarta.persistence.jdbc.password" value=""/>  -->
