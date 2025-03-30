@@ -27,7 +27,7 @@ public class Ansatt {
     private boolean erSjef;
 
 
-    @OneToMany(mappedBy="ansatt")
+    @OneToMany(mappedBy="Ansatt")
     private List<Prosjektdeltagelse> deltagelser;
 
     public void skrivUt(String innrykk) {
