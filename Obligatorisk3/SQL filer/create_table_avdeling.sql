@@ -5,7 +5,7 @@ CREATE TABLE Avdeling
     AvdelingID    SERIAL PRIMARY KEY,
     AvdelingsNavn VARCHAR(100) UNIQUE,
     Sjef          VARCHAR(151),
-    FOREIGN KEY (Sjef) REFERENCES Oblig3.Ansatt (Fornavn, Etternavn),
+    SjefID        INTEGER,
     AntallAnsatte INTEGER DEFAULT 0
 );
 

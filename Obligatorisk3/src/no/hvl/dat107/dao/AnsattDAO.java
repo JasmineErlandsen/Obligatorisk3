@@ -104,7 +104,7 @@ public class AnsattDAO {
 
     public void opprettNyAnsatt(String brukernavn, String fornavn, String etternavn,
                                 java.sql.Date ansettelsesdato, String stilling, double manedslonn
-                                //, String avdeling, boolean erSjef
+                                //, Avdeling avdeling, boolean erSjef
                                 ) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

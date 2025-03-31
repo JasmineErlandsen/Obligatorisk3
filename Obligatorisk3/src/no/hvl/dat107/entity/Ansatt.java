@@ -2,12 +2,8 @@ package no.hvl.dat107.entity;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.sql.Date;
 
 @Entity
@@ -23,7 +19,11 @@ public class Ansatt {
     private Date AnsettelsesDato;
     private String Stilling;
     private double Manedslonn;
-    private String Avdeling;
+
+    @ManyToOne
+    @JoinColumn(name = "avdeling_id")
+    private Avdeling avdeling;
+
     private boolean erSjef;
 
 
@@ -118,15 +118,14 @@ public class Ansatt {
         Manedslonn = manedslonn;
     }
 
-    public String getAvdeling() {
-
-        return Avdeling;
+    public Avdeling getAvdeling() {
+        return avdeling;
     }
 
-    public void setAvdeling(String avdeling) {
-
-        Avdeling = avdeling;
+    public void setAvdeling(Avdeling avdeling) {
+        this.avdeling = avdeling;
     }
+
 
     public boolean isErSjef() {
 

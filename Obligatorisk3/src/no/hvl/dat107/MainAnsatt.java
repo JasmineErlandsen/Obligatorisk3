@@ -155,14 +155,16 @@ public class MainAnsatt {
         double lønn = scanner.nextDouble();
 
        /* System.out.print("Avdeling: ");
-        scanner.nextLine(); // Clear newline
-        String avdeling = scanner.nextLine();
+        System.out.print("Avdeling ID: ");
+        int avdelingId = scanner.nextInt();
+        Avdeling avdeling = new AvdelingDAO().finnAvdelingMedID(avdelingId);
 
         System.out.print("Er personen sjef? (true/false): ");
         boolean erSjef = scanner.nextBoolean();*/
 
         ansattDAO.opprettNyAnsatt(brukernavn, fornavn, etternavn, dato, stilling, lønn//, avdeling, erSjef
         );
+
 
         System.out.println("Ny ansatt registrert!");
     }
