@@ -44,4 +44,5 @@ public class Prosjektdeltagelse {
                 ansatt.getFornavn(), ansatt.getEtternavn(), prosjekt.getProsjektNavn(), timer);
     }
 
+
 }
