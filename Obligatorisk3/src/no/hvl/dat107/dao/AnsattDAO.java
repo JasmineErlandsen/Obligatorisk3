@@ -54,13 +54,15 @@ public class AnsattDAO {
         EntityManager em = emf.createEntityManager();
         Double lonn = null;
 
-        try{
+        try {
             String queryString = "SELECT ans.Manedslonn FROM Ansatt ans WHERE ans.AnsattID = :AnsattID";
             TypedQuery<Double> query = em.createQuery(queryString, Double.class);
+            query.setParameter("AnsattID", id);  // Add parameter binding
             lonn = query.getSingleResult();
-
-        }catch (NoResultException e) {
+        } catch (NoResultException e) {
             System.out.println("Fant ikke ansatt for " + id);
+        } catch (Exception e) {
+            System.err.println("Error finding salary for employee " + id + ": " + e.getMessage());
         }finally {
             em.close();
         }
