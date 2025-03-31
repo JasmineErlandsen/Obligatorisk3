@@ -4,6 +4,8 @@ import no.hvl.dat107.dao.AnsattDAO;
 import no.hvl.dat107.dao.ProsjektDAO;
 import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
+import no.hvl.dat107.dao.ProsjektdeltagelseDAO;
+import no.hvl.dat107.entity.Prosjektdeltagelse;
 
 import java.util.Scanner;
 
@@ -74,7 +76,7 @@ public class MainAnsatt {
         System.out.print("Skriv inn prosjekt-ID: ");
         int prosjektId = scanner.nextInt();
 
-        ansattDAO.registrerProsjektdeltagelse(ansattId, prosjektId);
+        ProsjektdeltagelseDAO.registrerProsjektdeltagelse(ansattId, prosjektId);
         System.out.println("Prosjektdeltagelse registrert.");
     }
 
@@ -84,7 +86,7 @@ public class MainAnsatt {
         System.out.print("Skriv inn prosjekt-ID: ");
         int prosjektId = scanner.nextInt();
 
-        ansattDAO.slettProsjektdeltagelse(ansattId, prosjektId);
+        ProsjektdeltagelseDAO.slettProsjektdeltagelse(ansattId, prosjektId);
         System.out.println("Prosjektdeltagelse slettet.");
     }
 

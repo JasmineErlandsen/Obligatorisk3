@@ -30,7 +30,7 @@ public class Main {
         System.out.println("Ansettelsesdato: " + a2.getAnsettelsesDato());
         System.out.println("Er sjef: " + (a2.isErSjef() ? "Ja" : "Nei"));
 
-
+        System.out.print("Tester");
 //        Prosjekt p2 = prosjektDAO.finnProsjektMedId(2);
 //        p2.skrivUtMedAnsatte();
 //
