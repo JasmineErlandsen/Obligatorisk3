@@ -17,7 +17,7 @@ public class Prosjektdeltagelse {
     private int deltagelseid;
 
     private int timer;
-    private String rolle;
+    // private String rolle;
 
     @ManyToOne
     @JoinColumn(name="ansattid")
@@ -29,11 +29,11 @@ public class Prosjektdeltagelse {
 
     public Prosjektdeltagelse() {}
 
-    public Prosjektdeltagelse(Ansatt ansatt, Prosjekt prosjekt, int timer, String rolle) {
+    public Prosjektdeltagelse(Ansatt ansatt, Prosjekt prosjekt, int timer) {
         this.ansatt = ansatt;
         this.prosjekt = prosjekt;
         this.timer = timer;
-        this.rolle = rolle;
+        // this.rolle = rolle;
         //Hvis vi gjør dette her slipper vi å gjøre det i DAO
         ansatt.leggTilProsjektdeltagelse(this);
         prosjekt.leggTilProsjektdeltagelse(this);
@@ -41,7 +41,7 @@ public class Prosjektdeltagelse {
 
     public void skrivUt(String innrykk) {
         System.out.printf("%sDeltagelse: %s %s, %s, %d timer", innrykk,
-                ansatt.getFornavn(), ansatt.getEtternavn(), prosjekt.getProsjektNavn(), timer, rolle);
+                ansatt.getFornavn(), ansatt.getEtternavn(), prosjekt.getProsjektNavn(), timer);
     }
 
 }
