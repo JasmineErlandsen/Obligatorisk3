@@ -1,5 +1,7 @@
 package no.hvl.dat107.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import jakarta.persistence.EntityManager;
@@ -32,6 +34,21 @@ public class AnsattDAO {
             em.close();
         }
         return ansatt;
+    }
+
+    public List<Ansatt> finnAlleAnsatte() {
+       EntityManager em = emf.createEntityManager();
+       List<Ansatt> ansatte = new ArrayList<>();
+       try{
+           String queryString = "SELECT ans FROM Ansatt ans";
+           TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
+           ansatte = query.getResultList();
+       }
+       finally{
+           em.close();
+       }
+       return ansatte;
+
     }
 
     public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
