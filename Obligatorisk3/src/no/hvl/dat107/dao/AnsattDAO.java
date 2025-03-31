@@ -50,6 +50,23 @@ public class AnsattDAO {
         return ansatte;
     }
 
+    public Double finnLonnForAnsatt(String Brukernavn) {
+        EntityManager em = emf.createEntityManager();
+        Double lonn = null;
+
+        try{
+            String queryString = "SELECT ans.Manedslonn FROM Ansatt ans WHERE ans.Brukernavn = :Brukernavn";
+            TypedQuery<Double> query = em.createQuery(queryString, Double.class);
+            lonn = query.getSingleResult();
+
+        }catch (NoResultException e) {
+            System.out.println("Fant ikke ansatt for " + Brukernavn);
+        }finally {
+            em.close();
+        }
+        return lonn;
+    }
+
     public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
 
         EntityManager em = emf.createEntityManager();
