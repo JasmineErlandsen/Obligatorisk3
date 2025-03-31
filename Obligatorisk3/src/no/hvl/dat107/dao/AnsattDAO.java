@@ -34,75 +34,24 @@ public class AnsattDAO {
         return ansatt;
     }
 
-    public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
-
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
-        try {
-            tx.begin();
-
-            Ansatt a = em.find(Ansatt.class, ansattId);
-            Prosjekt p = em.find(Prosjekt.class, prosjektId);
-
-            Prosjektdeltagelse pd = new Prosjektdeltagelse(a, p, 0);
-
-            em.persist(pd);
-
-            tx.commit();
-        } catch (Throwable e) {
-            e.printStackTrace();
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-        } finally {
-            em.close();
-        }
-
-    }
-
-    public void slettProsjektdeltagelse(int ansattId, int prosjektId) {
-
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-
-            //TODO - Må søke med JPQL. Ellers som i b) Se hjelpemetode under.
-
-            tx.commit();
-        } catch (Throwable e) {
-            e.printStackTrace();
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-        } finally {
-            em.close();
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private Prosjektdeltagelse finnProsjektdeltagelse(int ansattId, int prosjektId) {
-
-        String queryString = "SELECT pd FROM Prosjektdeltagelse pd "
-                + "WHERE pd.ansatt.id = :ansattId AND pd.prosjekt.id = :prosjektId";
+    public Ansatt finnAnsattMedBrukernavn(String brukernavn) {
 
         EntityManager em = emf.createEntityManager();
 
-        Prosjektdeltagelse pd = null;
+        Ansatt ansatt = null;
         try {
-            TypedQuery<Prosjektdeltagelse> query
-                    = em.createQuery(queryString, Prosjektdeltagelse.class);
-            query.setParameter("ansattId", ansattId);
-            query.setParameter("prosjektId", prosjektId);
-            pd = query.getSingleResult();
-
+            String queryString = "SELECT a FROM Ansatt a WHERE a.Brukernavn = :brukernavn";
+            TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
+            query.setParameter("brukernavn", brukernavn);
+            ansatt = query.getSingleResult();
         } catch (NoResultException e) {
-            // e.printStackTrace();
+            // Return null if no ansatt found with given brukernavn
         } finally {
             em.close();
         }
-        return pd;
+        return ansatt;
     }
+
+
 
 }
