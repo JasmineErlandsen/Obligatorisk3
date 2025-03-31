@@ -147,4 +147,17 @@ public class Ansatt {
 
         this.deltagelser = deltagelser;
     }
+
+    @Override
+    public String toString() {
+        return "Ansatt: " + "\n" +
+                "ID = " + getAnsattID() +
+                "Fornavn = " + getFornavn() + "\n" +
+                "Etternavn = " + getEtternavn() + "\n" +
+                "Brukernavn = " + getBrukernavn() + "\n" +
+                "Stilling = " + getStilling() + "\n" +
+                "Lønn =" + getManedslonn();
+    }
+
 }
+

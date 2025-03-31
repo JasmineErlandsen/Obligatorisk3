@@ -14,6 +14,8 @@ import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.entity.Prosjektdeltagelse;
 
+import static no.hvl.dat107.dao.ProsjektdeltagelseDAO.emf;
+
 public class AnsattDAO {
 
     private EntityManagerFactory emf;
@@ -52,20 +54,23 @@ public class AnsattDAO {
 
     public Double finnLonnForAnsatt(int id) {
         EntityManager em = emf.createEntityManager();
-        Double lonn = null;
+        Double lønn = null;
 
-        try{
+        try {
             String queryString = "SELECT ans.Manedslonn FROM Ansatt ans WHERE ans.AnsattID = :AnsattID";
             TypedQuery<Double> query = em.createQuery(queryString, Double.class);
-            lonn = query.getSingleResult();
-
-        }catch (NoResultException e) {
+            query.setParameter("AnsattID", id);
+            lønn = query.getSingleResult();
+        } catch (NoResultException e) {
             System.out.println("Fant ikke ansatt for " + id);
-        }finally {
+        } finally {
             em.close();
         }
-        return lonn;
+
+        return lønn;
     }
+
+}
 
     public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
 
