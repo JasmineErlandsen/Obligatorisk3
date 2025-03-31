@@ -1,0 +1,10 @@
+SET search_path TO Oblig3;
+
+CREATE TABLE PROSJEKTDELTAGELSE
+(
+    AnsattID INTEGER REFERENCES Oblig3.ANSATT(AnsattID),
+    ProsjektID INTEGER REFERENCES Oblig3.PROSJEKT(ProsjektID),
+    Timer DECIMAL(4,2) NOT NULL,
+    Rolle VARCHAR(50),
+    PRIMARY KEY (AnsattID, ProsjektID)
+);

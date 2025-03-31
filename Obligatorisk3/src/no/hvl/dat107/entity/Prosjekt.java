@@ -15,14 +15,15 @@ public class Prosjekt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String navn;
+    private int ProsjektID;
+    private String ProsjektNavn;
+    private String ProsjektBeskrivelse;
 
     @OneToMany(mappedBy="prosjekt")
     private List<Prosjektdeltagelse> deltagelser;
 
     public void skrivUt(String innrykk) {
-        System.out.printf("%sProsjekt nr %d: %s", innrykk, id, navn);
+        System.out.printf("%sProsjekt nr %d: %s", innrykk, ProsjektID, ProsjektNavn);
     }
 
     public void skrivUtMedAnsatte() {
@@ -39,12 +40,32 @@ public class Prosjekt {
         deltagelser.remove(prosjektdeltagelse);
     }
 
-    public int getId() {
-        return id;
+    public int getProsjektID() {
+        return ProsjektID;
     }
 
-    public String getNavn() {
-        return navn;
+    public void setProsjektID(int prosjektID) {
+        ProsjektID = prosjektID;
+    }
+
+    public String getProsjektNavn() {
+        return ProsjektNavn;
+    }
+
+    public void setProsjektNavn(String prosjektNavn) {
+        ProsjektNavn = prosjektNavn;
+    }
+
+    public String getProsjektBeskrivelse() {
+        return ProsjektBeskrivelse;
+    }
+
+    public void setProsjektBeskrivelse(String prosjektBeskrivelse) {
+        ProsjektBeskrivelse = prosjektBeskrivelse;
+    }
+
+    public void setDeltagelser(List<Prosjektdeltagelse> deltagelser) {
+        this.deltagelser = deltagelser;
     }
 
     public List<Prosjektdeltagelse> getDeltagelser() {
