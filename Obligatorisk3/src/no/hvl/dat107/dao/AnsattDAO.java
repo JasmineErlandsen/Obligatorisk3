@@ -50,17 +50,17 @@ public class AnsattDAO {
         return ansatte;
     }
 
-    public Double finnLonnForAnsatt(String Brukernavn) {
+    public Double finnLonnForAnsatt(int id) {
         EntityManager em = emf.createEntityManager();
         Double lonn = null;
 
         try{
-            String queryString = "SELECT ans.Manedslonn FROM Ansatt ans WHERE ans.Brukernavn = :Brukernavn";
+            String queryString = "SELECT ans.Manedslonn FROM Ansatt ans WHERE ans.AnsattID = :AnsattID";
             TypedQuery<Double> query = em.createQuery(queryString, Double.class);
             lonn = query.getSingleResult();
 
         }catch (NoResultException e) {
-            System.out.println("Fant ikke ansatt for " + Brukernavn);
+            System.out.println("Fant ikke ansatt for " + id);
         }finally {
             em.close();
         }

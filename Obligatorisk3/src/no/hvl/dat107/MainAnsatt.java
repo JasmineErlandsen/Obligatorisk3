@@ -7,6 +7,7 @@ import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.dao.ProsjektdeltagelseDAO;
 import no.hvl.dat107.entity.Prosjektdeltagelse;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainAnsatt {
@@ -19,7 +20,7 @@ public class MainAnsatt {
         boolean fortsett = true;
 
         while (fortsett) {
-            skrivHovedmeny();
+            skrivHovedmenyAnsatt();
             int valg = scanner.nextInt();
             scanner.nextLine(); // Håndterer linebreak
 
@@ -36,6 +37,12 @@ public class MainAnsatt {
                 case 4:
                     visProsjektMedAnsatte();
                     break;
+                case 5:
+                    finnLonn();
+                    break;
+                case 6:
+                    alleAnsatte();
+                    break;
                 case 0:
                     fortsett = false;
                     System.out.println("Programmet avsluttes.");
@@ -47,12 +54,14 @@ public class MainAnsatt {
         scanner.close();
     }
 
-    private static void skrivHovedmeny() {
-        System.out.println("\n--- Hovedmeny ---");
+    private static void skrivHovedmenyAnsatt() {
+        System.out.println("\n--- Hovedmeny Ansatte ---");
         System.out.println("1. Finn og vis ansatt");
         System.out.println("2. Registrer prosjektdeltagelse");
         System.out.println("3. Slett prosjektdeltagelse");
         System.out.println("4. Vis prosjekt med ansatte");
+        System.out.println("5. Månedslønn for ansatte");
+        System.out.println("6. Oversikt over alle ansatte");
         System.out.println("0. Avslutt");
         System.out.print("Valg: ");
     }
@@ -100,5 +109,23 @@ public class MainAnsatt {
         } else {
             System.out.println("Fant ikke prosjekt med ID " + id);
         }
+    }
+
+    private static void finnLonn() {
+        System.out.print("Skriv inn Ansatt-ID: ");
+        int ansattId = scanner.nextInt();
+        Double ansatt = ansattDAO.finnLonnForAnsatt(ansattId);
+        if (ansatt != null) {
+            System.out.println("\n--- Månedslønn for ansatt ---");
+            System.out.println(ansatt);
+        }else {
+            System.out.println("Fant ikke ansatt med ID " + ansattId);
+        }
+    }
+    private static void alleAnsatte() {
+         List<Ansatt> ansatte = ansattDAO.finnAlleAnsatte();
+         for (int i = 0; i < ansatte.size(); i++) {
+             System.out.println(ansatte.get(i));
+         }
     }
 }
