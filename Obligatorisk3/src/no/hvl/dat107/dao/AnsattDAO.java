@@ -63,7 +63,10 @@ public class AnsattDAO {
             lønn = query.getSingleResult();
         } catch (NoResultException e) {
             System.out.println("Fant ikke ansatt for " + id);
-        } finally {
+        } catch (Exception e) {
+            System.err.println("Error finding salary for employee " + id + ": " + e.getMessage());
+        }
+        finally {
             em.close();
         }
 
