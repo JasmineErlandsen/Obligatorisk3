@@ -7,6 +7,7 @@ import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.dao.ProsjektdeltagelseDAO;
 import no.hvl.dat107.entity.Prosjektdeltagelse;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,6 +44,9 @@ public class MainAnsatt {
                 case 6:
                     alleAnsatte();
                     break;
+                case 7:
+                    opprettNyAnsatt();
+                    break;
                 case 0:
                     fortsett = false;
                     System.out.println("Programmet avsluttes.");
@@ -62,6 +66,7 @@ public class MainAnsatt {
         System.out.println("4. Vis prosjekt med ansatte");
         System.out.println("5. Månedslønn for ansatte");
         System.out.println("6. Oversikt over alle ansatte");
+        System.out.println("7. Opprett ny ansatt");
         System.out.println("0. Avslutt");
         System.out.print("Valg: ");
     }
@@ -114,14 +119,58 @@ public class MainAnsatt {
     private static void finnLonn() {
         System.out.print("Skriv inn Ansatt-ID: ");
         int ansattId = scanner.nextInt();
-        Double ansatt = ansattDAO.finnLonnForAnsatt(ansattId);
-        if (ansatt != null) {
+        Double ansattLonn = ansattDAO.finnLonnForAnsatt(ansattId);
+        if (ansattLonn != null) {
+            System.out.println("Skal lønnen oppdateres? 1 = ja, 0 = nei: ");
+            int decision = scanner.nextInt();
+            if(decision == 1) {
+                ansattLonn = ansattDAO.oppdaterLonnForAnsatt(ansattId);
+            }
             System.out.println("\n--- Månedslønn for ansatt ---");
-            System.out.println(ansatt);
+            System.out.println(ansattLonn);
         }else {
             System.out.println("Fant ikke ansatt med ID " + ansattId);
         }
     }
+
+    private static void opprettNyAnsatt() {
+        System.out.print("Brukernavn: ");
+        String brukernavn = scanner.next();
+
+        System.out.print("Fornavn: ");
+        String fornavn = scanner.next();
+
+        System.out.print("Etternavn: ");
+        String etternavn = scanner.next();
+
+        System.out.print("År for ansettelse (yyyy-mm-dd): ");
+        String datoStr = scanner.next();
+        Date dato = Date.valueOf(datoStr); // Konverter til SQL Date
+
+        System.out.print("Stilling: ");
+        scanner.nextLine(); // Clear newline
+        String stilling = scanner.nextLine();
+
+        System.out.print("Månedslønn: ");
+        double lønn = scanner.nextDouble();
+
+       /* System.out.print("Avdeling: ");
+        scanner.nextLine(); // Clear newline
+        String avdeling = scanner.nextLine();
+
+        System.out.print("Er personen sjef? (true/false): ");
+        boolean erSjef = scanner.nextBoolean();*/
+
+        ansattDAO.opprettNyAnsatt(brukernavn, fornavn, etternavn, dato, stilling, lønn//, avdeling, erSjef
+        );
+
+        System.out.println("Ny ansatt registrert!");
+    }
+
+
+
+
+
     private static void alleAnsatte() {
          List<Ansatt> ansatte = ansattDAO.finnAlleAnsatte();
          for (int i = 0; i < ansatte.size(); i++) {

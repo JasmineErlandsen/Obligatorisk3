@@ -151,12 +151,12 @@ public class Ansatt {
     @Override
     public String toString() {
         return "Ansatt: " + "\n" +
-                "ID = " + getAnsattID() +
+                "ID = " + getAnsattID() + "\n" +
                 "Fornavn = " + getFornavn() + "\n" +
                 "Etternavn = " + getEtternavn() + "\n" +
                 "Brukernavn = " + getBrukernavn() + "\n" +
                 "Stilling = " + getStilling() + "\n" +
-                "Lønn =" + getManedslonn();
+                "Lønn =" + getManedslonn() + "\n" ;
     }
 
 }

@@ -14,7 +14,7 @@ import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.entity.Prosjektdeltagelse;
 
-import static no.hvl.dat107.dao.ProsjektdeltagelseDAO.emf; //Hvorfor importer dere denne?
+//import static no.hvl.dat107.dao.ProsjektdeltagelseDAO.emf; //Hvorfor importer dere denne?
 
 public class AnsattDAO {
 
@@ -72,6 +72,68 @@ public class AnsattDAO {
 
         return lønn;
     }
+
+    public Double oppdaterLonnForAnsatt(int id) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        Double nyLonn = null;
+
+        try {
+            tx.begin();
+
+            Ansatt ansatt = em.find(Ansatt.class, id);
+            if (ansatt != null) {
+                double nåværendeLønn = ansatt.getManedslonn();
+                nyLonn = nåværendeLønn * 1.05;
+                ansatt.setManedslonn(nyLonn);
+                em.merge(ansatt);
+            }
+
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            System.err.println("Feil under oppdatering av lønn for ansatt " + id + ": " + e.getMessage());
+        } finally {
+            em.close();
+        }
+
+        return nyLonn;
+    }
+
+    public void opprettNyAnsatt(String brukernavn, String fornavn, String etternavn,
+                                java.sql.Date ansettelsesdato, String stilling, double manedslonn
+                                //, String avdeling, boolean erSjef
+                                ) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+            tx.begin();
+
+            Ansatt nyAnsatt = new Ansatt();
+            nyAnsatt.setBrukernavn(brukernavn);
+            nyAnsatt.setFornavn(fornavn);
+            nyAnsatt.setEtternavn(etternavn);
+            nyAnsatt.setAnsettelsesDato(ansettelsesdato);
+            nyAnsatt.setStilling(stilling);
+            nyAnsatt.setManedslonn(manedslonn);
+          //  nyAnsatt.setAvdeling(avdeling);
+          //  nyAnsatt.setErSjef(erSjef);
+
+            em.persist(nyAnsatt); // Save to database
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            System.err.println("Feil ved oppretting av ny ansatt: " + e.getMessage());
+        } finally {
+            em.close();
+        }
+    }
+
 
 
 
