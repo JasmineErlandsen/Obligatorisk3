@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../eclipselink-4.0.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/eclipselink-4.0.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../jakarta.persistence-api-3.1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jakarta.persistence-api-3.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../postgresql-42.7.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/postgresql-42.7.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
