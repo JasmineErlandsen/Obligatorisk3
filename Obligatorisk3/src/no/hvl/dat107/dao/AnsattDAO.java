@@ -94,48 +94,5 @@ public class AnsattDAO {
 
     }
 
-    public void slettProsjektdeltagelse(int ansattId, int prosjektId) {
-
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-
-            //TODO - Må søke med JPQL. Ellers som i b) Se hjelpemetode under.
-
-            tx.commit();
-        } catch (Throwable e) {
-            e.printStackTrace();
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-        } finally {
-            em.close();
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private Prosjektdeltagelse finnProsjektdeltagelse(int ansattId, int prosjektId) {
-
-        String queryString = "SELECT pd FROM Prosjektdeltagelse pd "
-                + "WHERE pd.ansatt.id = :ansattId AND pd.prosjekt.id = :prosjektId";
-
-        EntityManager em = emf.createEntityManager();
-
-        Prosjektdeltagelse pd = null;
-        try {
-            TypedQuery<Prosjektdeltagelse> query
-                    = em.createQuery(queryString, Prosjektdeltagelse.class);
-            query.setParameter("ansattId", ansattId);
-            query.setParameter("prosjektId", prosjektId);
-            pd = query.getSingleResult();
-
-        } catch (NoResultException e) {
-            // e.printStackTrace();
-        } finally {
-            em.close();
-        }
-        return pd;
-    }
 
 }
