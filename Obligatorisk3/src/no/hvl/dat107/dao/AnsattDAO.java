@@ -14,7 +14,7 @@ import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.entity.Prosjektdeltagelse;
 
-import static no.hvl.dat107.dao.ProsjektdeltagelseDAO.emf;
+import static no.hvl.dat107.dao.ProsjektdeltagelseDAO.emf; //Hvorfor importer dere denne?
 
 public class AnsattDAO {
 
@@ -73,7 +73,7 @@ public class AnsattDAO {
         return lønn;
     }
 
-}
+
 
     public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
 
