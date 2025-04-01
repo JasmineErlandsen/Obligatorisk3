@@ -22,22 +22,27 @@ public class Avdeling {
     private List<Ansatt> ansatte;
 
     public int getAvdelingID() {
+
         return avdelingID;
     }
 
     public void setAvdelingID(int avdelingID) {
+
         this.avdelingID = avdelingID;
     }
 
     public String getNavn() {
+
         return navn;
     }
 
     public void setNavn(String navn) {
+
         this.navn = navn;
     }
 
     public Ansatt getSjef() {
+
         return sjef;
     }
 
@@ -46,6 +51,7 @@ public class Avdeling {
     }
 
     public List<Ansatt> getAnsatte() {
+
         return ansatte;
     }
 
