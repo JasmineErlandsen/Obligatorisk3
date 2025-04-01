@@ -5,8 +5,6 @@ ALTER TABLE Ansatt
         FOREIGN KEY (Avdeling) REFERENCES Avdeling(AvdelingsNavn);
 
 ALTER TABLE Avdeling
-ADD CONSTRAINT fk_ansatt
-    FOREIGN KEY (Sjef) REFERENCES Ansatt(Fornavn, Etternavn),
 ADD CONSTRAINT fk_sjef
     FOREIGN KEY (SjefID) REFERENCES Ansatt(AnsattID);
 
