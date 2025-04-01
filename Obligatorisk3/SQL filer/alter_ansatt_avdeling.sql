@@ -4,6 +4,11 @@ ALTER TABLE Ansatt
     ADD CONSTRAINT fk_avdeling
         FOREIGN KEY (Avdeling) REFERENCES Avdeling(AvdelingsNavn);
 
+ALTER TABLE Avdeling
+ADD CONSTRAINT fk_ansatt
+    FOREIGN KEY (Sjef) REFERENCES Ansatt(Fornavn, Etternavn),
+ADD CONSTRAINT fk_sjef
+    FOREIGN KEY (SjefID) REFERENCES Ansatt(AnsattID);
 
 -- Lager en funksjon for å sørge for at det er en ansatt igjen
 -- og sørger for at siste ansatt alltid er Sjef
