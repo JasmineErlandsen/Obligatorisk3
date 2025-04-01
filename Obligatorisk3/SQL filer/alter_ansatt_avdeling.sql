@@ -45,8 +45,13 @@ BEGIN
         IF OLD.ErSjef = true THEN
             UPDATE Ansatt
             SET ErSjef = true
-            WHERE Avdeling = OLD.Avdeling
-                LIMIT 1;
+            WHERE AnsattID = (
+                SELECT AnsattID
+                FROM Ansatt
+                WHERE Avdeling = OLD.Avdeling
+                  AND AnsattID != OLD.AnsattID
+                LIMIT 1
+            );
         END IF;
     END IF;
 
@@ -61,8 +66,13 @@ BEGIN
         IF OLD.ErSjef = true THEN
             UPDATE Ansatt
             SET ErSjef = true
-            WHERE Avdeling = OLD.Avdeling
-                LIMIT 1;
+            WHERE AnsattID = (
+                SELECT AnsattID
+                FROM Ansatt
+                WHERE Avdeling = OLD.Avdeling
+                  AND AnsattID != OLD.AnsattID
+                LIMIT 1
+            );
         END IF;
     END IF;
 
