@@ -8,6 +8,27 @@ ALTER TABLE Avdeling
 ADD CONSTRAINT fk_sjef
     FOREIGN KEY (SjefID) REFERENCES Ansatt(AnsattID);
 
+-- Create a trigger function to update SjefID
+CREATE OR REPLACE FUNCTION update_sjef_id()
+    RETURNS TRIGGER AS $$
+BEGIN
+    -- If ErSjef is set to true
+    IF NEW.ErSjef = true THEN
+        -- Update the Avdeling table with the new SjefID
+        UPDATE Avdeling
+        SET SjefID = NEW.AnsattID
+        WHERE AvdelingsNavn = NEW.Avdeling;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create the trigger
+CREATE TRIGGER maintain_sjef_id
+    AFTER INSERT OR UPDATE ON Oblig3.ANSATT
+    FOR EACH ROW
+EXECUTE FUNCTION update_sjef_id();
+
 -- Lager en funksjon for å sørge for at det er en ansatt igjen
 -- og sørger for at siste ansatt alltid er Sjef
 CREATE OR REPLACE FUNCTION sjekk_siste_ansatt()
