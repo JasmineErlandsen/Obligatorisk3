@@ -4,7 +4,6 @@ CREATE TABLE Avdeling
 (
     AvdelingID    SERIAL PRIMARY KEY,
     AvdelingsNavn VARCHAR(100) UNIQUE,
-    Sjef          VARCHAR(151),
     SjefID        INTEGER,
     AntallAnsatte INTEGER DEFAULT 0
 );
