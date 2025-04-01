@@ -185,9 +185,9 @@ public class MainAnsatt {
         Ansatt nysjef = ansattDAO.finnAnsattMedId(scanner.nextInt());
 
         avdelingDAO.opprettAvdeling(navn, nysjef);
+
         System.out.println("Ny avdeling opprettet!");
     }
-
 
 
     private static void alleAnsatte() {

@@ -12,13 +12,13 @@ public class Avdeling {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int avdelingID;
 
-    private String navn;
+    private String avdelingsnavn;
 
     @OneToOne
-    @JoinColumn(name = "sjef_id")
+    @JoinColumn(name = "SjefID")
     private Ansatt sjef;
 
-    @OneToMany(mappedBy = "avdeling")
+    @OneToMany(mappedBy = "Avdeling")
     private List<Ansatt> ansatte;
 
     public int getAvdelingID() {
@@ -31,14 +31,14 @@ public class Avdeling {
         this.avdelingID = avdelingID;
     }
 
-    public String getNavn() {
+    public String getAvdelingsnavn() {
 
-        return navn;
+        return avdelingsnavn;
     }
 
-    public void setNavn(String navn) {
+    public void setAvdelingsnavn(String navn) {
 
-        this.navn = navn;
+        this.avdelingsnavn = navn;
     }
 
     public Ansatt getSjef() {
@@ -63,7 +63,7 @@ public class Avdeling {
     public String toString() {
         return "Avdeling{" +
                 "avdelingID=" + avdelingID +
-                ", navn='" + navn + '\'' +
+                ", navn='" + avdelingsnavn + '\'' +
                 ", sjef=" + (sjef != null ? sjef.getFornavn() + " " + sjef.getEtternavn() : "Ingen") +
                 '}';
     }

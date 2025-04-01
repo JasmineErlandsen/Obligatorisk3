@@ -6,7 +6,6 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Avdeling;
-import no.hvl.dat107.dao.AnsattDAO.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,7 @@ public class AvdelingDAO {
             em.getTransaction().begin();
 
             Ansatt gammelSjef = em.createQuery( "SELECT a FROM Ansatt a WHERE a.avdeling = :avdeling AND a.erSjef = true", Ansatt.class)
-                    .setParameter("avdeling", avdeling.getNavn())
+                    .setParameter("avdeling", avdeling)
                     .getSingleResult();
 
             if (gammelSjef != null) {
@@ -84,7 +83,7 @@ public class AvdelingDAO {
         try{
             em.getTransaction().begin(); //Starter transaksjon
             Avdeling nyAvdeling = new Avdeling();//Oppretter ny avdeling og setter sjef
-            nyAvdeling.setNavn(navn);
+            nyAvdeling.setAvdelingsnavn(navn);
             em.persist(nyAvdeling); //Lagrer i databasen
 
             oppdaterSjef(nyAvdeling, nySjef);//Oppdaterer sjefens avdeling
