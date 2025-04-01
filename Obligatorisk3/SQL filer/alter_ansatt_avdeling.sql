@@ -99,3 +99,5 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER alltid_en_ansatt_trigger
     BEFORE INSERT ON Avdeling
     FOR EACH ROW EXECUTE FUNCTION alltid_en_ansatt();
+
+

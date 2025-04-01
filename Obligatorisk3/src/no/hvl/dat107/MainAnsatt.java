@@ -2,6 +2,8 @@ package no.hvl.dat107;
 
 import no.hvl.dat107.dao.AnsattDAO;
 import no.hvl.dat107.dao.ProsjektDAO;
+import no.hvl.dat107.dao.AvdelingDAO;
+import no.hvl.dat107.entity.Avdeling;
 import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
 import no.hvl.dat107.dao.ProsjektdeltagelseDAO;
@@ -15,6 +17,7 @@ public class MainAnsatt {
 
     private static AnsattDAO ansattDAO = new AnsattDAO();
     private static ProsjektDAO prosjektDAO = new ProsjektDAO();
+    private static AvdelingDAO avdelingDAO = new AvdelingDAO();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -47,6 +50,9 @@ public class MainAnsatt {
                 case 7:
                     opprettNyAnsatt();
                     break;
+                case 8:
+                    opprettNyAvdeling();
+                    break;
                 case 0:
                     fortsett = false;
                     System.out.println("Programmet avsluttes.");
@@ -67,6 +73,7 @@ public class MainAnsatt {
         System.out.println("5. Månedslønn for ansatte");
         System.out.println("6. Oversikt over alle ansatte");
         System.out.println("7. Opprett ny ansatt");
+        System.out.println("8. Lag ny avdeling med sjef");
         System.out.println("0. Avslutt");
         System.out.print("Valg: ");
     }
@@ -170,6 +177,16 @@ public class MainAnsatt {
     }
 
 
+    private static void opprettNyAvdeling() {
+        System.out.println("Skriv navn på ny avdeling: ");
+        String navn = scanner.next();
+
+        System.out.println("Skriv Ansatt-ID for ny sjef: ");
+        Ansatt nysjef = ansattDAO.finnAnsattMedId(scanner.nextInt());
+
+        avdelingDAO.opprettAvdeling(navn, nysjef);
+        System.out.println("Ny avdeling opprettet!");
+    }
 
 
 

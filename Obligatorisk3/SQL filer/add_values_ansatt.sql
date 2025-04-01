@@ -10,3 +10,4 @@ VALUES
     ('SO', 'Sofia', 'Olsen', '2021-09-01', 'Sales Representative', 35000.00, 'Salg', false),
     ('TA', 'Tom', 'Andersen', '2022-01-15', 'System Engineer', 43000.00, 'IT', false),
     ('ML', 'Maria', 'Larsen', '2022-03-01', 'Sales Representative', 35000.00, 'Salg', false);
+

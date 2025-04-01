@@ -21,7 +21,7 @@ public class Ansatt {
     private double Manedslonn;
 
     @ManyToOne
-    @JoinColumn(name = "avdeling_id")
+    @JoinColumn(name = "AvdelingID")
     private Avdeling avdeling;
 
     private boolean erSjef;
